@@ -1,11 +1,13 @@
 "use client";
 
+import styles from "./login-form.module.css";
 import login from "@/actions/login";
 import { useFormState, useFormStatus } from "react-dom";
 import Button from "@/components/forms/button";
 import Input from "@/components/forms/input";
 import ErrorMessage from "../helper/error-message";
 import React from "react";
+import Link from "next/link";
 
 function FormButton() {
   const { pending } = useFormStatus();
@@ -36,12 +38,22 @@ export default function LoginForm() {
 
   return (
     <>
-      <form action={action}>
+      <form action={action} className={styles.form}>
         <Input label="Usuário" name="username" type="text" />
         <Input label="Senha" name="password" type="password" />
         <ErrorMessage error={state.error} />
         <FormButton />
       </form>
+      <Link href="/login/recover" className={styles.perdeu}>
+        Esqueceu a senha?
+      </Link>
+      <div className={styles.cadastro}>
+        <h2 className={styles.subtitle}>Cadastre-se</h2>
+        <p>Ainda não possui conta? Cadastre-se no site.</p>
+        <Link href="/login/create" className="button">
+          Cadastro
+        </Link>
+      </div>
     </>
   );
 }
