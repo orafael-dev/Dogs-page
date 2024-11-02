@@ -1,3 +1,4 @@
+import LoginRecoverForm from "@/components/login/login-recover-form";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,10 +6,12 @@ export const metadata: Metadata = {
   description: "Recupere a sua senha no site dogs",
 };
 
+
 export default async function RecoverPage() {
   return (
-    <div>
-      <h1>Recover</h1>
+    <div className="animeLeft">
+      <h1 className="title">Esqueceu a senha?</h1>
+      <LoginRecoverForm />
     </div>
   );
 }
