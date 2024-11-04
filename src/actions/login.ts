@@ -7,7 +7,6 @@ import { cookies } from "next/headers";
 export default async function login(state: {}, formData: FormData) {
   const username = formData.get("username") as string | null;
   const password = formData.get("password") as string | null;
-  console.log(formData);
   try {
     if (!username || !password) {
       throw new Error("Usuário e senha são obrigatórios");
@@ -17,7 +16,6 @@ export default async function login(state: {}, formData: FormData) {
       method: "POST",
       body: formData,
     });
-    console.log(response.ok);
     if (!response.ok) {
       throw new Error("Usuário ou senha inválidos");
     }
