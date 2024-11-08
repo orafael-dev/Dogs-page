@@ -1,6 +1,14 @@
 import statsGet from "@/actions/stats-get";
-import AccountStats from "@/components/conta/conta-statistics";
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
+
+const AccountStats = dynamic(
+  () => import("@/components/conta/conta-statistics"),
+  {
+    loading: () => <p>Carregando...</p>,
+    ssr: false,
+  }
+);
 
 export const metadata: Metadata = {
   title: "Estatísticas | Minha Conta",
